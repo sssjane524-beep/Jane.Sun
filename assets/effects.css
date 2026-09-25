@@ -6,12 +6,13 @@
 .intro-home .orb-rotation-inner::before{background:conic-gradient(from 90deg,transparent 0 17%,#9ec3eea6 27%,transparent 37% 58%,#7da9e99c 72%,transparent 83% 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px))}
 .intro-home .orb-rotation-glint{position:absolute;top:5.6%;left:72%;width:9px;height:9px;border-radius:50%;background:#d9eeff;box-shadow:0 0 10px 3px #a3c8f5,0 0 24px 8px #b7d5fa8c}
 @keyframes orbit-turn{to{transform:rotate(360deg)}}
-.contact-playground{position:relative;display:block;min-height:540px;margin-top:16px;overflow:hidden;isolation:isolate;text-align:center;padding:60px 25px 0}
+.contact-playground{position:relative;left:50%;display:block;width:100vw;max-width:none;min-height:630px;margin-top:16px;margin-left:-50vw;overflow:hidden;isolation:isolate;text-align:center;padding:70px 25px 0}
 .contact-playground::before{content:"";position:absolute;inset:auto 5% 0;height:65%;background:radial-gradient(ellipse at 50% 100%,#ceddfa59,transparent 64%);pointer-events:none}
 .contact-content{position:relative;z-index:2;display:flex;align-items:center;flex-direction:column;gap:7px}
 .contact-content h2{margin:4px 0 7px;color:#203f84;font-family:Georgia,'Songti SC','SimSun',serif;font-size:clamp(24px,3vw,36px);line-height:1.3}
 .contact-content>a{display:inline-block;color:#2452b4;border-bottom:1px solid #9bb7e4;padding-bottom:4px;font-size:clamp(16px,1.8vw,22px);overflow-wrap:anywhere}
 .contact-content>a:hover{color:#0e3bb0}
 .contact-balls{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-@media(max-width:540px){.contact-playground{min-height:450px;padding:46px 8px 0}.contact-content h2{font-size:25px}.intro-home .orb-rotation-glint{width:6px;height:6px}}
+@media(max-width:540px){.contact-playground{min-height:520px;padding:46px 8px 0}.contact-content h2{font-size:25px}.intro-home .orb-rotation-glint{width:6px;height:6px}}
+body{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){.intro-home .orb-rotation,.intro-home .orb-rotation-inner{animation:none!important}.cursor-light{display:none!important}}
