@@ -1,11 +1,26 @@
 /* Decorative motion is separate from content and never receives pointer events. */
 .cursor-light{position:fixed;inset:0;width:100%;height:100%;z-index:30;pointer-events:none;mix-blend-mode:multiply}
-.intro-home .orb-rotation{position:absolute;inset:9%;border-radius:50%;pointer-events:none;animation:orbit-turn 28s linear infinite}
-.intro-home .orb-rotation::before,.intro-home .orb-rotation-inner::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 18deg,transparent 0 10%,#7fa9eb99 15%,#d5e4fa55 25%,transparent 31% 49%,#5f8edf8c 57%,transparent 65% 82%,#9ec2f19e 90%,transparent 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 2px));filter:drop-shadow(0 0 6px #8db6ed8c)}
-.intro-home .orb-rotation-inner{position:absolute;inset:13%;border-radius:50%;animation:orbit-turn 19s linear infinite reverse}
-.intro-home .orb-rotation-inner::before{background:conic-gradient(from 90deg,transparent 0 17%,#9ec3eea6 27%,transparent 37% 58%,#7da9e99c 72%,transparent 83% 100%);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px));mask:radial-gradient(farthest-side,transparent calc(100% - 2px),#000 calc(100% - 1px))}
-.intro-home .orb-rotation-glint{position:absolute;top:5.6%;left:72%;width:9px;height:9px;border-radius:50%;background:#d9eeff;box-shadow:0 0 10px 3px #a3c8f5,0 0 24px 8px #b7d5fa8c}
-@keyframes orbit-turn{to{transform:rotate(360deg)}}
+/* A diffuse centre and a rotating typographic orbit, without visible rails. */
+.intro-home .orb-scene{max-width:610px}
+.intro-home .orb-drift{animation:orbit-drift 15s ease-in-out infinite}
+.intro-home .orb-aura{inset:13%;background:radial-gradient(circle,#b9c8e838 0%,#d3dbed1c 43%,transparent 71%);filter:blur(24px);animation:orbit-haze 9s ease-in-out infinite}
+.intro-home .orb-core{inset:24%;border-radius:50%;background:radial-gradient(circle,#8fa6d755 0%,#a9bae444 33%,#c3cdeb29 60%,transparent 77%);box-shadow:none;filter:blur(22px);animation:orbit-haze 9s ease-in-out infinite}
+.orbit-navigation,.orbit-type{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.orbit-type{animation:orbit-text-turn 85s linear infinite;transform-origin:50% 50%}
+.orbit-type text{font:18px 'Courier New',monospace;letter-spacing:4px;fill:#969baa;transition:fill .25s,opacity .25s}
+.orbit-type a{opacity:.6;transition:opacity .25s;cursor:pointer}
+.orbit-type a:hover,.orbit-type a:focus-visible{opacity:1;outline:none}
+.orbit-type a:hover text,.orbit-type a:focus-visible text{fill:#1949c8}
+.orbit-type a:focus-visible text{paint-order:stroke;stroke:#bdccf5;stroke-width:6px;stroke-linejoin:round}
+.orbit-type .orbit-separator{fill:#a7aab1;opacity:.6;pointer-events:none}
+.orbit-navigation:focus-within .orbit-type{animation-play-state:paused}
+.orbit-selection{position:absolute;inset:42% 15%;display:grid;place-items:center;text-align:center;font:italic 27px Georgia,'Songti SC','SimSun',serif;color:#1645bd;pointer-events:none;opacity:0;transition:opacity .25s}
+.orbit-selection.is-active{opacity:1}
+@keyframes orbit-text-turn{from{transform:rotate(-25deg)}to{transform:rotate(335deg)}}
+@keyframes orbit-haze{0%,100%{scale:.95;opacity:.7}50%{scale:1.08;opacity:1}}
+@keyframes orbit-drift{0%,100%{translate:0 6px}50%{translate:0 -9px}}
+@media(max-width:540px){.orbit-type text{font-size:24px;letter-spacing:4px}.orbit-selection{font-size:23px}.intro-home .orb-core{filter:blur(15px)}}
+@media(prefers-reduced-motion:reduce){.orbit-type{animation:none}.intro-home .orb-drift,.intro-home .orb-aura,.intro-home .orb-core{animation:none!important}}
 .contact-playground{position:relative;left:50%;display:block;width:100vw;max-width:none;min-height:630px;margin-top:16px;margin-left:-50vw;overflow:hidden;isolation:isolate;text-align:center;padding:70px 25px 0}
 .contact-playground::before{content:"";position:absolute;inset:auto 5% 0;height:65%;background:radial-gradient(ellipse at 50% 100%,#ceddfa59,transparent 64%);pointer-events:none}
 .contact-content{position:relative;z-index:2;display:flex;align-items:center;flex-direction:column;gap:7px}
@@ -13,6 +28,6 @@
 .contact-content>a{display:inline-block;color:#2452b4;border-bottom:1px solid #9bb7e4;padding-bottom:4px;font-size:clamp(16px,1.8vw,22px);overflow-wrap:anywhere}
 .contact-content>a:hover{color:#0e3bb0}
 .contact-balls{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-@media(max-width:540px){.contact-playground{min-height:520px;padding:46px 8px 0}.contact-content h2{font-size:25px}.intro-home .orb-rotation-glint{width:6px;height:6px}}
+@media(max-width:540px){.contact-playground{min-height:520px;padding:46px 8px 0}.contact-content h2{font-size:25px}}
 body{overflow-x:clip}
-@media(prefers-reduced-motion:reduce){.intro-home .orb-rotation,.intro-home .orb-rotation-inner{animation:none!important}.cursor-light{display:none!important}}
+@media(prefers-reduced-motion:reduce){.cursor-light{display:none!important}}
